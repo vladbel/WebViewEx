@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="WebViewEx.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WebViewEx"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{StaticResource HtmlTileViewModel}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <local:HtmlTileControl HorizontalAlignment="Left" Margin="27,25,0,0" VerticalAlignment="Top" Height="717" Width="615" />
+        <TextBox Text="{Binding Html, Mode=TwoWay}" Margin="672,25,25,26"  TextWrapping="Wrap"/>
+    </Grid>
+</Page>

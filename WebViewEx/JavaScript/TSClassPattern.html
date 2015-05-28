@@ -1,0 +1,67 @@
+﻿            <html onselectstart='return false;' xmlns='http://www.w3.org/1999/xhtml'>
+            <head>
+                <title>test title</title>
+                <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+            </head>
+            <body>
+                <br />
+                <div>
+                    <div>
+                        <a id='GETdata' href='javascript://'>GET with data</a>
+                    </div>
+                </div>
+
+                <script>
+
+                    $('#GETdata').click(function () {
+                        ST.request('test');
+                        return false;
+                    });
+
+
+                    function requestReceived(evt) {
+                        console.log('requestReceived', evt);
+                    };
+
+                    function invokeScriptGlobal(arg1, arg2) {
+                        console.log('invokeScriptGlobal', arg1, arg2);
+                        ST.receivedSmartThingsMessageSuccess(arg1, arg2);
+
+                    };
+
+                </script>
+
+                <script>
+                    var SmartThing = (function () {
+                        /// constructor
+                        function SmartThing(message) {
+                            this._message = message;
+                        }
+
+                        SmartThing.prototype.request = function () {
+                            console.log('Notify Host: try to raise notification for hosting app.');
+                            try {
+                                window.external.notify('notification argument');
+                            } catch (e) {
+                                var element = document.getElementById('output');
+                                if (element) {
+                                    element.innerHTML = 'Error notifyng host';
+                                }
+                                console.log(e);
+                            }
+                        };
+
+                        SmartThing.prototype.receivedSmartThingsMessageSuccess = function (arg1, arg2) {
+                            console.log('SmartThings.prototype.receivedSmartThingsMessageSuccess', arg1, arg2);
+                        };
+
+                        return SmartThing;
+                    })();
+
+                    var ST = new SmartThing('foo');
+                    console.log("ST: ", ST);
+                </script>
+            </body>
+            </html>
+
+

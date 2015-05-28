@@ -108,6 +108,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HtmlScript.cs" />
     <Compile Include="HtmlTileControl.xaml.cs">
       <DependentUpon>HtmlTileControl.xaml</DependentUpon>
     </Compile>
@@ -131,7 +132,10 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
-    <Content Include="ScriptSample.html" />
+    <Content Include="JavaScript\ClassicModulePatern.html" />
+    <Content Include="JavaScript\ScriptSample.html" />
+    <Content Include="JavaScript\SimplifyedScriptSample.html" />
+    <Content Include="JavaScript\TSClassPattern.html" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

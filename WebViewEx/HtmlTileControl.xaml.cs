@@ -27,10 +27,26 @@ namespace WebViewEx
 
         private async void ScriptNotify_Handler(object sender, NotifyEventArgs e)
         {
+            // handle notification from JavaScript
             System.Diagnostics.Debug.WriteLine("Script notification: " + e.Value);
 
+
+            // Invoke JavaScript function
             string[] args = { "arg1", "arg2" };
-            await this.HtmlTileView.InvokeScriptAsync(@"handleInvokeScript", args);
+
+            
+            try
+            {
+                string result;
+                //result = await this.HtmlTileView.InvokeScriptAsync(@"invokeScriptGlobal", args);
+                // This will throw exception "Unknown name. (Exception from HRESULT: 0x80020006 (DISP_E_UNKNOWNNAME))"
+                result = await this.HtmlTileView.InvokeScriptAsync("ST.receivedSmartThingsMessageSuccess", args);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+            
         }
     }
 }

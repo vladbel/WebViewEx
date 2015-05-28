@@ -1,0 +1,78 @@
+﻿
+
+                <html onselectstart='return false;' xmlns='http://www.w3.org/1999/xhtml'>
+                <head>
+                    <!-- Use SmartApp Specified Title -->
+                    <title>test title</title>
+                    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+                </head>
+
+                <body>
+
+                    <!-- Inject SmartApp Specified Body -->
+
+                    <br />
+                    <div>
+                        <div>
+                            <a id='GETdata' href='javascript://'>GET with data</a>
+                        </div>
+                    </div>
+
+                    <script>
+
+
+                        $('#GETdata').click(function () {
+                            ST.request('test');
+                            return false;
+                        });
+
+
+                        function requestReceived(evt) {
+                            console.log('requestReceived', evt);
+                        };
+
+                        function invokeScriptGlobal(arg1, arg2) {
+                            console.log('invokeScriptGlobal', arg1, arg2);
+                            ST.receivedSmartThingsMessageSuccess(arg1, arg2);
+
+                        };
+
+                    </script>
+
+                    <!-- This is simplifyed injected script: just -->
+                    <script>
+
+                        var ST = (function () {
+                            var SmartThing = { };
+
+                            /**
+                              * Notify host
+                              */
+                            SmartThing.request = function () {
+                                console.log('Notify Host: try to raise notification for hosting app.');
+                                try {
+                                    window.external.notify('notification argument');
+                                } catch (e) {
+                                    var element = document.getElementById('output');
+                                    if (element) {
+                                        element.innerHTML = 'Error notifyng host';
+                                    }
+                                    console.log(e);
+                                }
+                            }
+
+
+                            // success callback
+                            SmartThing.receivedSmartThingsMessageSuccess = function(arg1, arg2) {
+                                console.log('SmartThings1.prototype.receivedSmartThingsMessageSuccess', arg1, arg2);
+                            };
+                            SmartThing.receivedSmartThingsMessageSuccess = receivedSmartThingsMessageSuccess;
+
+                            console.log('initialized', SmartThing);
+                            return SmartThing;
+                        })();
+                    </script>
+                </body>
+                </html>
+
+

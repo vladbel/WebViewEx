@@ -589,6 +589,7 @@ namespace WebViewEx
         #region "Type Script style pattern"
         // see JavaScript\TSClassPattern.js
         public static string TypeScriptClassPattern = @"
+            <!DOCTYPE html>
             <html onselectstart='return false;' xmlns='http://www.w3.org/1999/xhtml'>
             <head>
                 <title>test title</title>

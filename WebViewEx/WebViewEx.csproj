@@ -113,6 +113,7 @@
       <DependentUpon>HtmlTileControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="HtmlTileViewModel.cs" />
+    <Compile Include="HtmlViewModelHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

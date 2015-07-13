@@ -32,21 +32,23 @@ namespace WebViewEx
 
 
             // Invoke JavaScript function
-            string[] args = { "arg1", "arg2" };
+            var script = await HtmlViewModelHelpers.HandleScriptNotify(new HtmlViewModelHelpers.ScriptNotificationMessage { Id = "id_value" }, HtmlViewModelHelpers.ExecuteScriptAsync);
 
-            
+
+
             try
             {
                 string result;
-                //result = await this.HtmlTileView.InvokeScriptAsync(@"invokeScriptGlobal", args);
+                result = await this.HtmlTileView.InvokeScriptAsync("eval", new string[] { script });
                 // This will throw exception "Unknown name. (Exception from HRESULT: 0x80020006 (DISP_E_UNKNOWNNAME))"
-                result = await this.HtmlTileView.InvokeScriptAsync("ST.receivedSmartThingsMessageSuccess", args);
+                //result = await this.HtmlTileView.InvokeScriptAsync("ST.receivedSmartThingsMessageSuccess", args);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
-            
+
         }
     }
+        
 }

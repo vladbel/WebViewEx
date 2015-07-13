@@ -1,4 +1,6 @@
-﻿            <html onselectstart='return false;' xmlns='http://www.w3.org/1999/xhtml'>
+﻿            
+        <!DOCTYPE html>
+        <html onselectstart='return false;' xmlns='http://www.w3.org/1999/xhtml'>
             <head>
                 <title>test title</title>
                 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
@@ -41,7 +43,7 @@
                         SmartThing.prototype.request = function () {
                             console.log('Notify Host: try to raise notification for hosting app.');
                             try {
-                                window.external.notify('notification argument');
+                                window.external.notify({id: "id_value", params: [1,2,3]});
                             } catch (e) {
                                 var element = document.getElementById('output');
                                 if (element) {
